@@ -1,6 +1,6 @@
 ## Sprint 1 (09-04-2018)
 
-**1. **Definir las validaciones de todos los formularios de la aplicación.
+**1.** Definir las validaciones de todos los formularios de la aplicación.
 
 **Formulario Usuarios**
 
