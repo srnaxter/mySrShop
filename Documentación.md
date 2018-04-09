@@ -35,7 +35,7 @@ jQueryUI: *Autocomplete* para ayudar a la búsqueda de un producto
 
 jQueryUI: *Tooltip* para ayudar con los input del formulario
 
-**4.**Definir Componentes que usan CSS y Javascript.
+**4.** Definir Componentes que usan CSS y Javascript.
 
 Bootstrap: *izimodal* para la alerta cuando un producto es borrado, menu *navbar* para indicar la barra de navegación principal de la aplicación, *glyphicons* para poner iconos en la aplicación, *Button addons* para la barra de busqueda, *Pagination* para poder cambiar las diferente paginas
 
