@@ -1,44 +1,53 @@
-## Sprint 1 (09-04-2018)
+# Sprint 1 (09-04-2018)
 
-**1.** Definir las validaciones de todos los formularios de la aplicación.
+- Para homogenizar el formato de todos los documentos, la estrucuctura del mismo será la siguiente:
+  - Formularios. Indicar con PAS aquellas restricciones que son necesarias consultas al servidor.
+  - Funcionalidades Javascript.Indicando con PAS aquellas que podrían o deberían hacerse con  peticiones al servidor.
+  - Librerías.Por ejemplo:
+    - Bootstrap:
+      - Dropdown-> Para desplegar categorías
+    - Jquery-ui:
+      - Autocomplete
+    - Iconos
+- A continuación se detallan mejoras, ejemplos e indicaciones:
 
-**Formulario Usuarios**
+* Consideraciones:
 
-Correo: No puede estar vacio ni lleno de espacios, validación de correo, maximo 50 palabras
+  * Debería poder votarse los productos
+  * En tu caso deberías crear un modelo/tabla que se enlace, y que se pueda asociar a los productos, es decir, un producto tendría varios enlaces dónde se pueden comprar dicho producto y con el valor actual.
+  * Permitir crear categorías de productos para facilitar su organización.
+  * No es asimétrica, es asíncrona.
 
-Contraseña: No puede estar vacio ni lleno de espacios, que contenga minimo 6 caracteres, que contenga mayuscula, minuscula y numero.
-Repite contraseña:no puede estar vacio ni lleno de espacios, que se repita el campo contraseña.
+* Formularios:
 
-**Fomurlario Producto**
+  * Esquematizar un poco más las resctricciones de los campos del formulario.
+  * Indicar las expresiones regulares que se permiten.
+  * Debería incluirse los formularios de Categorías,Tallas y Comentarios.
 
-Titulo producto: No puede estar vacio ni lleno de espacios, minimo 3 letras, maximo 30 letras, no se puede poner numero ni caracteres, pero si mayuscula y minuscula.
+* Funcionalidades javascript que se podrían incluir. Incluyo PAS en aquellos casos que se debería o se podría hacer con peticiones asíncronas al servidor:
 
-Precio del producto: No puede estas vacio ni lleno de espacios, solo podra meter numero incluido decimales, maximo 2 decimales.
+  * Validación de formularios. (PAS)
+  * Función para filtrar productos, por ejemplo el precio. (PAS)
+  * Función para filtrar enlaces de un producto. (PAS)
+  * Permitir modificar el formulario de crear un producto dependiendo de la categoría que existe.
+  * Crear, editar y eliminar productos. (PAS)
+  * Crear, editar y eliminar enlaces. (PAS)
+  * Asociar enlaces a un producto.
+  * Incluir más ejemplos.
 
-Talla: Es un select que no hace falta validarlo porque viene predeterminado una talla
+* Librerías:
 
-Categoria: Es un select que no hace falta validarlo porque viene predeterminado una categoria
+  * Jquery-ui
+  * Bootstrap
+  * IziModal(No es de bootstrap, es una librería aparte)
+  * Glyphicons 
 
-Descripcion: No puede estar vacio ni lleno de espacios, minimo 30 letras y maximo 600 letras pede contener mayusculas y minuscula y numero pero no caracteres
+* Ejemplos de Componentes CSS y JS que puedes usar, por ejemplo:
 
-**2.** Definir funcionalidades javascript que existirán en la aplicación.
+  * Bootstrap:
+    * Navs => Para crear un sistema de pestañas.
+    * NavBar => Menu navegación de la apicación.
+  * Jquer-ui:
+    * Autocomplete
+    * Tooltip (Aunque ya existe uno en Bootstrap)
 
-Funcion que el modal habra una pestalla de alerts para la eliminacion de un producto
-Funcion la cual se cambie automáticamente al hacer un cambio en el perfil
-Funcion que haga qe cuando la valoracion se haga se que ya modificada sin salir de la pagina
-Funcion que se escriba un comentario y se ponga automáticamente al enviarlo
-
-**3.** Definir Librerías javascript que se van a usar en la aplicación.
-
-*modal* para usar la alerta cuando elimine un producto
-jQueryUI: *Autocomplete* para ayudar a la búsqueda de un producto
-
-jQueryUI: *Tooltip* para ayudar con los input del formulario
-
-**4.** Definir Componentes que usan CSS y Javascript.
-
-Bootstrap: *izimodal* para la alerta cuando un producto es borrado, menu *navbar* para indicar la barra de navegación principal de la aplicación, *glyphicons* para poner iconos en la aplicación, *Button addons* para la barra de busqueda, *Pagination* para poder cambiar las diferente paginas
-
-**5.** Definir funcionalidades con peticiones al servidor de forma asíncrona.
-
-Buscar de forma asimentrica sin que cambien de ventana o pestaña, la edicion del perfil del usuario asimétricamente para cuando edites el usuario cambie sin cambiar de pestaña, la valoraciones y comentarios del producto que se añada asimetricamente
