@@ -10,7 +10,7 @@ function validarTitulo() {
     let inputTitulo = $("#titulo");
     let titulo = inputTitulo.val();
 
-    if (!name.match(regex) || titulo === "") {
+    if (!titulo.match(regex) || titulo === "") {
         $('#ti').removeClass('is-valid');
         $('#titulo').addClass('is-invalid');
         $('#errorTitulo').html("Mínimo de 4 caracteres" + "\n" +
@@ -30,7 +30,7 @@ function validarPrecio() {
     let inputPrecio = $("#precio");
     let precio = inputPrecio.val();
 
-    if (!name.match(regex) || precio === "") {
+    if (!precio.match(regex) || precio === "") {
         $('#ti').removeClass('is-valid');
         $('#precio').addClass('is-invalid');
         $('#errorPrecio').html("Error de precio").addClass('is-invalid');
@@ -52,7 +52,7 @@ function validarDescripcion() {
     let inputDescripcion = $("#descripcion");
     let descripcion = inputDescripcion.val();
 
-    if (!name.match(regex) || descripcion === "") {
+    if (!descripcion.match(regex) || descripcion === "") {
         $('#ti').removeClass('is-valid');
         $('#descripcion').addClass('is-invalid');
         $('#errorDescripcion').html("Mínimo de 4 caracteres" + "\n" +

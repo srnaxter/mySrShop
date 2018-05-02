@@ -15,6 +15,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -25,6 +26,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -35,6 +37,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -48,6 +51,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -58,6 +62,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -68,6 +73,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -81,6 +87,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -91,6 +98,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -101,6 +109,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                 </div>
@@ -114,6 +123,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -124,6 +134,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                     <div class="card">
@@ -134,6 +145,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: 50€</small>
+                            <a href="#" class="btn btn-primary">Buy</a>
                         </div>
                     </div>
                 </div>
