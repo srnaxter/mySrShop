@@ -24,9 +24,9 @@
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>
-                        <a href="{{url('/products',$product->id.'/edit')}}">Editar</a>
+                        <a href="{{url('/products', $product->id.'/edit')}}">Editar</a>
 
-                        @include('products.delete'.['$product' => $product])
+                        @include('products.delete')
                     </td>
                 </tr>
                 @endforeach

@@ -18,6 +18,9 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
+
+        //dd($products);
+
         return view("products.index",["products" => $products]);
     }
 
@@ -63,7 +66,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+
+        return view('products.show', ['product' => $product]);
     }
 
     /**
@@ -75,6 +80,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product =  Product::find($id);
+
         return view("products.edit",["product" => $product]);
     }
 
@@ -110,7 +116,7 @@ class ProductsController extends Controller
     {
         Product::destroy($id);
 
-        return redirect('/product');
+        return redirect('/products');
 
     }
 
