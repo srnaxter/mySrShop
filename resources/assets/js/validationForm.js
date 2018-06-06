@@ -1,83 +1,176 @@
 $(function () {
-    $("#titulo").on("change", validarTitulo);
-    $("#precio").on("change", validarPrecio);
-    $("#descripcion").on("change", validarDescripcion);
-    $('#enviar').on("click", validarTodo);
+    $('#enviar').on("click", validateAll);
+    $('#title').on("change", validateTitle);
+    $('#category').on("change", validateCategory);
+    $('#content').on("change", validateContent);
+    $('#load').on("click", loadData);
+    $('#loadOne').on("click", loadDataOne);
+    $('#loadView').on("click", loadViewOne);
+
 });
 
-function validarTitulo() {
-    let regex = /^[A-Z0-5]*$/;
-    let inputTitulo = $("#titulo");
-    let titulo = inputTitulo.val();
+let cont = 0;
 
-    if (!titulo.match(regex) || titulo === "") {
-        $('#ti').removeClass('is-valid');
-        $('#titulo').addClass('is-invalid');
-        $('#errorTitulo').html("Mínimo de 4 caracteres" + "\n" +
-            "Máximo de 15" + "\n" +
-            "Caracteres de la A-z y números").addClass('is-invalid');
-    } else {
-        $('#titulo').removeClass('is-invalid');
-        $('#titulo').addClass('is-valid');
-
-        $('#errorTitulo').removeClass('is-invalid');
-        $('#errorTitulo').html('');
-    }
-}
-
-function validarPrecio() {
-    let regex = /($[0-9,]+(.[0-9]{2})?)/;
-    let inputPrecio = $("#precio");
-    let precio = inputPrecio.val();
-
-    if (!precio.match(regex) || precio === "") {
-        $('#ti').removeClass('is-valid');
-        $('#precio').addClass('is-invalid');
-        $('#errorPrecio').html("Error de precio").addClass('is-invalid');
-        // Los precios vienen en una variedad de formatos que pueden contener decimales, comas y símbolos de moneda.
-        // Esta expresión regular puede comprobar todos estos diferentes formatos para sacar el precio de cualquier cadena.
-        // Los precios vienen en una variedad de formatos que pueden contener decimales, comas y símbolos de moneda.
-        // Esta expresión regular puede comprobar todos estos diferentes formatos para sacar el precio de cualquier cadena.
-    } else {
-        $('#precio').removeClass('is-invalid');
-        $('#precio').addClass('is-valid');
-
-        $('#errorPrecio').removeClass('is-invalid');
-        $('#errorPrecio').html('');
-    }
-}
-
-function validarDescripcion() {
-    let regex = /^[\s\S]{15,200}$/;
-    let inputDescripcion = $("#descripcion");
-    let descripcion = inputDescripcion.val();
-
-    if (!descripcion.match(regex) || descripcion === "") {
-        $('#ti').removeClass('is-valid');
-        $('#descripcion').addClass('is-invalid');
-        $('#errorDescripcion').html("Mínimo de 4 caracteres" + "\n" +
-            "Máximo de 15" + "\n" +
-            "Caracteres de la A-z y números").addClass('is-invalid');
-    } else {
-        $('#descripcion').removeClass('is-invalid');
-        $('#descripcion').addClass('is-valid');
-
-        $('#errorDescripcion').removeClass('is-invalid');
-        $('#errordescripcion').html('');
-    }
-}
-
-function validarTodo(e) {
+function validateAll(e) {
     e.preventDefault();
-    $('button').prop("disabled", true);
+    let button = $('button');
+    button.prop("disabled", true);
 
-    let tituloCorrecto = validarTitulo();
-    let precioCorrecto = validarPrecio();
-    let descripcionCorrecta = validarDescripcion();
+    let data = {};
+    data["title"] = $("#title").val();
+    data["category"] = $("#category").val();
+    data["content"] = $("#content").val();
 
-    if (tituloCorrecto && precioCorrecto && descripcionCorrecta) {
-        $('#formulario').submit();
+    axios.post('/topics/validate', data
+    ).then(function (response) {
+        let tituloIncorrecto = gestionarErrores($("#title"), response.data["title"]);
+        let PrecioIncorrecto = gestionarErrores($("#category"), response.data["category"]);
+        let DescripcionIncorrecto = gestionarErrores($("#content"), response.data["content"]);
+
+        if (!tituloIncorrecto && !PrecioIncorrecto && !DescripcionIncorrecto) {
+            $('#form').submit();
+        }
+    }).catch(function (error) {
+        console.log(error);
+    }).then(function(){
+        $('button').prop("disabled", false);
+    });
+}
+
+
+function validate(field) {
+
+    let data = {};
+    data[field] = $("#" + field).val();
+
+    axios.post('/products/validate', data
+    ).then(function (response) {
+        gestionarErrores($("#" + field), response.data[field]);
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+function validateTitle() {
+    validate("title");
+}
+
+function validateCategory() {
+    validate("price");
+}
+
+function validateContent() {
+    validate("description");
+}
+
+function gestionarErrores(input, errores) {
+    let hayErrores = false;
+    let divErrores = input.next("div");
+    divErrores.html("");
+    input.removeClass("is-valid is-invalid");
+
+    if (errores === undefined || errores.length === 0) {
+        input.addClass("is-valid");
+    } else {
+        hayErrores = true;
+        input.addClass("is-invalid");
+        for (let error of errores) {
+            divErrores.append('<div class="alert alert-danger" role="alert">' + error + '</div>');
+        }
     }
+    return hayErrores;
+}
 
-    $('button').prop("disabled", false);
+function showSpinner(input) {
+    if (input.parent().next().length === 0) {
+        let spin = $(".spinner").first().clone(true);
+        input.parent().after(spin);
+        spin.show();
+    }
+}
+
+function hideSpinner() {
+    $("#" + campo).parent().next().remove()
+}
+
+function loadData() {
+
+    let resp = $("#ProductList");
+
+    axios.get('/data/loadAjax', {})
+        .then(function (response) {
+            showResponse(response, resp);
+        }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+function loadDataOne() {
+
+    let resp = $("#ProductList");
+    axios.post('/data/loadAjaxOne',
+        {
+            posicionInicial: cont,
+            numeroElementos: 1
+        }
+    ).then(function (response) {
+        showResponse(response, resp);
+        cont++;
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+function loadViewOne() {
+    axios.post('/data/loadAjaxView',
+        {
+            posicionInicial: cont,
+            numeroElementos: 2
+        }
+    ).then(function (response) {
+        $('#ProductList').append(response.data);
+        cont +=2;
+    }).catch(function (error) {
+        console.log(error);
+    });
+}
+
+function buildElement(elemento) {
+
+    let div = $("<div></div>");
+    div.addClass("card");
+
+    let divHeader = $('<div></div>');
+    divHeader.addClass("card-header");
+    let h2 = $("<h2></h2>");
+    let a = $("<a></a>");
+    let p = $("<p></p>");
+    let em = $("<em></em>");
+    let pContent = $("<p></p>");
+
+    h2.addClass("card-title");
+    p.addClass("card-subtitle");
+    pContent.addClass("card-body");
+
+    a.text(elemento.title);
+    p.text(elemento.price);
+    pContent.text(elemento.description);
+
+    h2.append(a);
+    divHeader.append(h2);
+    p.append(em);
+    divHeader.append(p);
+    div.append(divHeader);
+    div.append(pContent);
+
+    return div;
+}
+
+function showResponse(response, resp) {
+    let data = response.data;
+    for (let item in response.data) {
+        let elemento = data[item];
+        let div = buildElement(elemento);
+        resp.append(div);
+    }
 }

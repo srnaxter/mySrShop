@@ -18,5 +18,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PagesController@index');
 Route::resource('products', 'ProductsController');
 
+//Carga asincrona
+Route::get('/data/dataAjax', 'ProductsController@loadData');
+Route::get('/data/loadAjax', 'ProductsController@loadDataAjax');
+Route::post('/data/loadAjaxOne', 'ProductsController@loadDataAjaxOne');
+Route::post('/data/loadAjaxView', 'ProductsController@loadDataAjaxView');
+
 
 

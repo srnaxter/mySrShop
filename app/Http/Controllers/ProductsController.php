@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -121,8 +122,40 @@ class ProductsController extends Controller
     }
 
     /*Validacion por Ajax con FormRquest*/
-    protected function validacionAjax(UserAjaxFormRequest $request){
-        //Obtenermos todos los valores y devolvemos un array vacio
+
+    public function validateTopicAjax(CreateTopicAjaxRequest $request)
+    {
+        //Obtenemos todos los valores y devolvemos un array vacío.
         return array();
+    }
+    public function loadData()
+    {
+        return view('dataAjax');
+    }
+    public function loadDataAjax()
+    {
+        $products = Product::all();
+        return $products;
+    }
+    public function loadDataAjaxOne(Request $request)
+    {
+        $posicionInicial = $request->get("posicionInicial");
+        $numElementos = $request->get("numeroElementos");
+        $products = DB::table("products")
+            ->offset($posicionInicial)
+            ->limit($numElementos)
+            ->get();
+        return $products;
+    }
+    public function loadDataAjaxView(Request $request)
+    {
+        $posicionInicial = $request->get("posicionInicial");
+        $numElementos = $request->get("numeroElementos");
+        $products = DB::table("products")
+            ->offset($posicionInicial)
+            ->limit($numElementos)
+            ->get();
+        $view = view('products.partial_list_show', ['products' => $products]);
+        return $view;
     }
 }
