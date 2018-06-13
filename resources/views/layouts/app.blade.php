@@ -41,6 +41,15 @@
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Authentication Links -->
+                        @if(isset($shopping_cart))
+                        <li>
+                            <a href="">Mi carrito
+                                <span class="circle-shopping-cart">
+                            {{$shopping_cart->productsSize()}}
+                        </span>
+                            </a>
+                        </li>
+                        @endif
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
