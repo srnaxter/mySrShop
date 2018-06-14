@@ -35,21 +35,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-
+                    <li>
+                        <a href="{{url('/carrito')}}">Mi carrito
+                            <span class="circle-shopping-cart">
+                            {{$productsCount}}
+                        </span>
+                        </a>
+                    </li>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Authentication Links -->
-                        @if(isset($shopping_cart))
-                        <li>
-                            <a href="">Mi carrito
-                                <span class="circle-shopping-cart">
-                            {{$shopping_cart->productsSize()}}
-                        </span>
-                            </a>
-                        </li>
-                        @endif
+
+
+
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
@@ -59,7 +59,7 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} <span class="caret"/>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">

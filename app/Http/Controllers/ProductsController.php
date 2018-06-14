@@ -117,8 +117,8 @@ class ProductsController extends Controller
     {
         Product::destroy($id);
 
-        return redirect('/products');
-
+        //return redirect('/products');
+        return 1;
     }
 
     /*Validacion por Ajax con FormRquest*/
