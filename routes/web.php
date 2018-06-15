@@ -17,10 +17,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PagesController@index');
 Route::get('/carrito', 'ShoppingCartsController@index');
+Route::get('/payments/store', 'ShoppingCartsController@index');
 Route::resource('products', 'ProductsController');
 Route::resource('in_shopping_carts', 'InShoppingCartsController',[
     'only' => ['store', 'destroy']
 ]);
+
+
 
 
 //Carga asincrona

@@ -9,7 +9,7 @@
         <div class="form group"><h3>Descripción</h3>{{ Form::textarea('description',$product->description,['class' => 'form-control', 'placeholder'=>'Describe tu producto...']) }}</div>
         <div class="form group text-right">
             <a href="{{url('/products')}}">Regresar al listado de productos</a>
-            <input type="submit" value="Guardar" class="btn btn-primary">
+            <input type="submit" value="Enviar" class="btn btn-primary">
         </div>
         @method($method)
         {!! Form::close() !!}

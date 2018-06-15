@@ -55,7 +55,8 @@
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
                             <a href="{{url('/products/create')}}" class="btn btn-primary">+Añadir</a>
-                            <a href="{{url('/data/dataAjax')}}" class="btn btn-primary">Cargar</a>
+                            <a href="{{url('/data/dataAjax')}}" class="btn btn-warning">Cargar</a>
+                            <a href="{{url('/products')}}" class="btn btn-danger">Ver productos</a>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

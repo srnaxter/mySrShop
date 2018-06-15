@@ -47,7 +47,7 @@
                             <!-- Modal body-->
                             <div class="modal-body text-center">
                                 <p>
-                                    ¿Está seguro de querer borrar este tema?
+                                    ¿Está seguro de quieres borrar este tema?
                                 </p>
                             </div>
                             <!-- Modal footer-->
