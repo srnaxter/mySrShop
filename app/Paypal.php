@@ -77,7 +77,9 @@ class Paypal{
                             ->setTotal($this->shopping_cart->total());
     }
 
-
+    public function execute($paymentId,$payerId){
+        $payment = \PaypalPayment::getById($paymentId);
+    }
 
 
 }

@@ -13,7 +13,9 @@ class PaymentsController extends Controller
 
         $shopping_cart = ShoppingCart::findOrCreateBySessionID($shopping_cart_id);
 
-        $paypal = new Paypal($shopping_cart)
+        $paypal = new Paypal($shopping_cart);
+
+        $paypal->execute($request->paymentId,$request->PayerID);
 
 
     }
