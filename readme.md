@@ -47,13 +47,9 @@ Escriba los siguientes comandos para instalar todos los componentes necesarios:
 
 ## Características
 
-Como usuario registrado:
+**Como usuario registrado**:
 
 Crear, editar y borrar producto.
 Ver carrito con el nombre de producto precio y total
-**Como usuario no registrado**:
+Ver página principal
 
-Registrarse.
-Ver carrito con el nombre de producto precio y total
-Iniciar sesión (si está registrado).
-Ver página principal con preguntas.
